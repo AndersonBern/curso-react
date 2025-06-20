@@ -1,0 +1,50 @@
+REACT 
+
+É uma BIBLIOTECA JavaScript de código aberto, criada para 
+construir interfaces de usuário (UI) interativas em aplicações 
+web.
+Em termos mais simples, React permite que você divida sua 
+interface em partes menores e reutilizáveis chamadas componentes.
+Cada componente tem sua própria lógica e aparência, o que torna o
+desenvolvimento e a manutenção do código mais fáceis. 
+ 
+  - JSX: 
+	Uma extensão de sintaxe do JavaScript que permite escrever
+	código HTML dentro do JavaScript, facilitando a criação e
+	a manutenção de componentes. 
+
+
+Criando o primeiro script com React:
+
+1- É necessário criar um arquivo HTML e nele adicionar links de 
+   script CDN, para poder utuilizar o REACT.
+
+2- No <body> crie uma <div> com ID 'root' por convenção. Pois será
+   neste elemento que o nosso script React vai ser mostrado.
+
+	* <div id="root"></div>
+
+3- Crie um <script> apontando para o seu arquivo .js onde será    
+   feito o script REACT:
+
+	* <script type="text/babel" src="app.js"></script>
+
+	OBS.: É OBRIGATÓRIO ADICIONAR O ATRIBUTO 'type' com:
+	      text/babel. Para que o arquivo .js possa INTERPRETAR
+	      o JSX do seu script REACT.
+
+4- No arquivo 'app.js' crie o método de RENDERIZAÇÃO para mostrar
+   seu JSX no HTML:
+
+	* ReactDOM.render(<h1>Olá mundo do React!</h1>,
+	  document.getElementById('root'));
+
+		- ReactDOM.render(): Para RENDERIZAR na arvore DOM
+				     com 2 parametros:
+
+			1- <h1>Olá mundo do React!</h1>: tag HTML;
+
+			2- document.getElementById('root'): 
+				A <div> root, que é onde será 
+				mostrado o nosso script.
+	
