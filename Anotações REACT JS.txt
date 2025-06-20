@@ -17,7 +17,8 @@ desenvolvimento e a manutenção do código mais fáceis.
 Criando o primeiro script com React:
 
 1- É necessário criar um arquivo HTML e nele adicionar links de 
-   script CDN, para poder utuilizar o REACT.
+   script CDN, para poder utuilizar o REACT. Cada elemento em JSX
+   é na verdade um OBJETO{}, o que facilita muito a manipulação.
 
 2- No <body> crie uma <div> com ID 'root' por convenção. Pois será
    neste elemento que o nosso script React vai ser mostrado.
@@ -47,4 +48,195 @@ Criando o primeiro script com React:
 			2- document.getElementById('root'): 
 				A <div> root, que é onde será 
 				mostrado o nosso script.
+
+
+OBS.: Para adicionar uma classe(class) ao elemento basta usar o 
+      atributo 'className'.
+
+	ex.: const elemento = <h1 className="header">Olá mundo
+	     JSX!</h1>;
+
+
+
+Funcionalidades do JSX
+
+O JSX aceita: Constantes/variaveis, objetos, funções, etc...
+Para isto basta utilizar as mesmas dentro de chaves{}.
+
+ex. CONSTANTE/VARIAVEL: 
+
+    - const nome = 'Anderson Bernardo';
+      const elemento= <h1 className="header">Olá, {nome}!</h1>
+
+ex. OBJETO: 
+ 
+   - const user = {
+    	nome: 'Anderson',
+    	sobrenome: 'Bernardo'
+     };
+
+     const elemento= <h1 className="header">Olá, {user.nome}!</h1>
+
+ex. FUNÇÃO: 
+
+   - function nomeCompleto(user) {
+    	return user.nome + ' ' + user.sobrenome;
+     };
+
+     const elemento= <h1 className="header">Olá, 
+     {nomeCompleto(user)}!</h1>
+
+
+
+PARA JSX COM MAIS DE UM ELEMENTO
+
+Quando elementos JSX tem mais de UMA tag, é necessário que eles 
+estejam dentro de uma tag PAI. Como uma <div>.
+
+ex.: const elemento = (
+    	<div>
+            <h1 className="header">Olá, {nomeCompleto(user)}!</h1>
+            <p>Isto é um paragrafo.</p>
+        </div>
+     );
+
+    OBS.: É INTERESSANTE que estes elementos estejam entre 
+	  PARENTESES(), para facilitar a leitura e a organização 
+	  do script.
+
+
+
+COMPONENTES FUNÇÃO E PROPS(propriedades)
+
+COMPONENTES são blocos de construção reutilizáveis que formam a 
+interface do usuário, enquanto PROPS são dados que são passados 
+de um componente pai para um componente filho. Em resumo, 
+COMPONENTES são como peças de LEGO que se encaixam para criar a 
+interface, e PROPS são como instruções que dizem a cada peça o 
+que fazer ou como se comportar. 
+
+OBS.: Por CONVENSÃO os componentes devem ser nomeados com letra 
+      maiuscula no INICIO da palavra e também para SEPARAR 
+      palavras(camel-case). 
+
+	ex.: function FazerContagem(){...}
+
+
+EXEMPLO de COMPONENTE: 
+
+	- function BemVindo() {
+        	return <h1>Olá Mundo!</h1>
+    	  };
+
+Para RENDERIZAR:
+
+	- ReactDOM.render(
+    		<BemVindo/>,
+    		document.getElementById('root')
+  	 );
+
+   * Um COMPONENTE vira uma TAG. Neste caso <BemVindo/>.
+
+	OBS.: É necessário que após o nome do COMPONENTE e as
+	      PROPS tenha uma '/' para FECHAR a tag.
+
+
+EXEMPLO DE COMPONETE COM PROPS:
+
+	- function BemVindo(props) {
+        	return <h1>Olá {props.nome}!</h1>
+    	  };
+
+	  ReactDOM.render(
+    		<BemVindo nome='Bernardo'/>,
+    		document.getElementById('root')
+  	 );
+
+   * As PROPS(propriedades) são como as de tags de HTML, porém
+     podem ser chamadas como quizermos. E para mostrar as PROPS
+     no componente é necessário colocar entre chaves{} 
+     'props.NomeDaPropriedade'.
+
+
+Também é possivel fazer CONDIÇÕES com PROPS nos COMPONENTES:  
+
+	- function BemVindo(props) {
+    		if(props.nome) {
+        		return <h1>Olá {props.nome}!</h1>
+    		}
+    		return <h1>Olá, Estranho!</h1>
+    
+	  };
+
+	  ReactDOM.render(
+    		<div>
+    			<BemVindo nome='Bernardo'/>
+    			<BemVindo/>
+    		</div>,
+    		document.getElementById('root')
+	  );
+
+	EXPLICAÇÃO POR LINHA:
+	
+	Parte componente:
+	1- function BemVindo(props) {...}: COMPONENTE com PROPS.
+
+	2- if(props.nome) {...}: SE(if) existir a propriedade 
+				 'nome'(props.nome)...
+
+	3- return <h1>Olá {props.nome}!</h1>: Retorna um <h1> com
+					      o PROPS 'nome'.
+
+	4- return <h1>Olá, Estranho!</h1>: SE NÃO, retorna uma tag
+					   <h1> simples.
+
+	Parte render:
+	5- ReactDOM.render(...): Para renderizar com REACT...
+
+	6- <div>...</div>: Como temos MAIS DE UMA tag, é 
+			   necessário criar uma tag PAI <div>.
+
+	7- <BemVindo nome='Bernardo'/>: COMPONENTE com 
+				 	PROPS 'nome', Que irá 
+					concordar com a condição
+					(if) e será renderizado em
+					uma tag <h1> com a PROPS.
+
+	8- <BemVindo/>: COMPONENTE sem PROPS, que não irá 
+	 		concordar com a condição (if) e será 
+			renderizado com uma tag <h1> simples.
+
+	9- document.getElementById('root'): Vai renderizar todo o
+					    o conteúdo dentro da
+					    tag com ID 'root'.
+
+    		
+
+CONVENSÃO DE ORGANIZÇÃO DOS COMPONENTES
+
+Quando temos MAIS de UM componente criamos um COMPONENTE 'App',
+para organizarmos todos os componentes dentro do componente 'App'.
+Para quando formos RENDERIZAR(.render) utilizamos apenas a 
+tag <App/>. O que melhora   muito a LEGIBILIDADE do nosso script.
+
+ex.: function App() {
+    	return (
+        	<div>
+            		<BemVindo nome='Bernardo'/>
+           		<Conteudo/>
+        	</div>
+    	);
+    };
+
+    ReactDOM.render(
+    	<App/>,
+    	document.getElementById('root')
+    );	
+
+
+	* Criamos o componente 'App' e DENTRO dele colocamos os 
+	  outros componentes: <Bemvindo/> e <Conteudo/>.
+	  E quando formos renderizar(.render) apenas colocamos o
+	  COMPONENTE 'App' que já possui toda a organização dos
+	  componentes da nossa página. 
 	
