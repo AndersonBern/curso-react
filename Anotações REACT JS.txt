@@ -212,7 +212,7 @@ Também é possivel fazer CONDIÇÕES com PROPS nos COMPONENTES:
 
     		
 
-CONVENSÃO DE ORGANIZÇÃO DOS COMPONENTES
+CONVENSÃO DE ORGANIZAÇÃO DOS COMPONENTES
 
 Quando temos MAIS de UM componente criamos um COMPONENTE 'App',
 para organizarmos todos os componentes dentro do componente 'App'.
@@ -239,4 +239,144 @@ ex.: function App() {
 	  E quando formos renderizar(.render) apenas colocamos o
 	  COMPONENTE 'App' que já possui toda a organização dos
 	  componentes da nossa página. 
+
+OBS.: Se optamos por criar um arquivo(.js) só para os componentes
+      (ex.: comp.js) para utilizarmos ele no script é necessário 
+      declarar no arquivo HTML(index.html). Desta forma:
+
+	- <script type="text/babel" src="comp.js"></script>
+    	  <script type="text/babel" src="app.js"></script>
+
+
+   * É OBRIGATÓRIO: SEMPRE ACIMA do script 'app.js'!
+ 
+      - Também serve para FrameWorks como 'BootStrap'. Qualquer 
+   	arquivo .js deve vir ACIMA do script 'app.js'.
+
+
+
+COMPONENTES DE CLASSES
+
+Para criamos um COMPONENTE como CLASSE(class), é um pouco 
+diferente dos componentes de Função, vejamos:
+
+	ex.:  class Destaque extends React.Component {
+    		constructor(props) {
+        		super(props);
+    		}
+		
+		render() {
+			return (
+				<div>
+					<h1>Olá mundo</h1>
+				</div>
+			)
+		}
+	      };
+
+
+	1- class Destaque extends React.Component {...}:
+		Quer dizer que a CLASSE(class) 'Destaque' 
+		Se ESTENDE(extends) 
+		A um COMPONETE REACT(React.Component)
+
+	2- constructor(props) {...}:
+		O construtor(constructor) para criar as 
+		Propriedades(props)
+
+	3- super(props):
+		Para RECUPERAR as propriedades(props)
+
+	4- render() {...}: 
+		Onde vai as tags do COMPONENTE.
+
+   OBS.: É OBRIGATÓRIO SEMPRE USAR ESTES MÉTODOS NA CRIAÇÃO DE
+	 UM COMPONETE DE CLASSE.
+
+
+Para PEGAR PROPS DENTRO DE UM COMPONENTE DE CLASSE:
+
+	1- DECLARE o PROPS normalmente:
+
+		- function App() {
+    			return (
+                	  <Destaque texto='Oi, isto é um texto!'/>
+			)
+		  };
+
+		* Declaramos a PROPriedade 'texto'.
+
+	2- Para MOSTRAR NO ELEMENTO:
+	   NORMALMENTE em um componente de função seria apenas: 
+	   'props.texto'. Porém em um COMPONENTE DE CLASSE é 
+	   necessário colocar o 'this.' antes:
+
+		- class Destaque extends React.Component {
+    			constructor(props) {
+        			super(props);
+    			}
+		
+			render() {
+				return (
+					<h1>{this.prop.texto}</h1>
+				)
+			}
+	      	  };
+
+
+	    * {this.props.texto}: ESTE(this.) é OBRIGATÓRIO. 
+
+
+
+
+ESTADO(state) de um componente de classe
+
+O estado(state) é um objeto interno que permite aos componentes 
+armazenar e gerenciar dados que podem mudar ao longo do tempo e 
+afetar a renderização do componente. Diferente das props, o estado
+é gerenciado e alterado exclusivamente dentro do próprio 
+componente.
+
+1- É necessário dar um ESTADO(state) INICIAL:
+
+   * DENTRO DO METODO 'contructor()'...
+	ex.: 
+       		this.state = {
+           		nome: 'Bernardo'
+       	 	}
+
+
+   * Para MOSTRAR nas tags do COMPONENTE:
+
+	ex.: render() {
+        	return (
+			<h1>{this.state.nome}</h1>
+		)
+	     }
+
+
+2- Para MUDAR o ESTADO(state) após uma ação:
+
+   * É ncessário usar um método para troca de ESTADO: set.State()
+
+	- trocaNome = ()=> {
+        	this.setState(function(prevState) {
+			return { nome: 'Anderson'}
+		})
+	  }
+
+	1- trocaNome = ()=> {...}: 
+		Criamos uma variavel que recebe uma FUNÇÃO(pode 
+		ser uma função direto, sem a variavel).
+
+	2- this.setState(function(prevState) {...}):
+		O método de MUDANÇA de ESTADO(this.setState)
+		Com uma FUNÇÃO que recebe como parametro o 
+		'prevState'(O ANTIGO ESTADO).
+
+	3- return { nome: 'Anderson'}: 
+		RETORNA UM OBJETO que muda a propriedade 'nome' do 
+		'prevState'(Estado Antigo).
+
+
 	
