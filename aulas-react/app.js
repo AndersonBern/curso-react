@@ -26,7 +26,7 @@ function BemVindo(props) {
 function Conteudo(props) {
     return (
         <div>
-            <h2>Subtitulo</h2>
+            <h2>Isto é outro componente</h2>
             <p>blablablablablablablablablalbs</p>
         </div>
     );
@@ -45,4 +45,4 @@ function App() {
 ReactDOM.render(
     <App/>,
     document.getElementById('root')
-);
+); 
