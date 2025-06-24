@@ -380,3 +380,145 @@ componente.
 
 
 	
+ESTADO(hook) em COMPONENTES FUNCIONAIS
+
+ 1- Criar o ESTADO em um componente funcional é um pouco diferente
+   porém mais direto:
+
+	- const [count, setCount] = React.useState(0)
+
+		* Criamos uma CONSTante com 2 valores dentro de 
+		  colchetes:
+
+			- count: Valor do estado;
+
+			- setCount: Nome da função que vai gerar
+				    o novo valor do estado.
+				    (Por padrão sempre será 'set',
+				     e o nome do valor do estado).
+				    ex.: setCount.
+
+		* React.useState(0): É o método HOOK, e o valor 
+				     inicial do ESTADO. Que no
+				     caso é 0.
+
+
+ 2- Para MOSTRAR o ESTADO nas tags html:
+
+	- function Contador(props) {
+
+    		const [count, setCount] = React.useState(0)
+
+    		return (
+			<h1>Contador: {count}</h1>
+		)}
+
+	Basta colocar o nome do valor do ESTADO dentro de CHAVES{}.
+
+
+ 3- Para ALTERAR o ESTADO(hook) após uma ação: 
+
+   * A ação será ao CLICAR, ou seja, 'onclick' EM REACT(jsx):
+  
+	- onClick={nome da função}
+
+        * Dentro da tag onde você quer que a ação aconteça.
+	
+		ex.: <button onClick={add}> Add </button>
+
+
+   1° Criar a função para alterar o ESTADO:
+	
+	- function add() {
+        	setCount(count + 1);
+    	  }
+
+		* function add() {...}: Criamos a função 'add'.
+
+		* setCount(count + 1): A função que declaramos
+					dentro das chaves junto
+					com o valor do ESTADO,
+					recebe:
+					O VALOR do ESTADO(count)
+					+ 1.
+					Isto faz com que o valor
+					do ESTADO receba +1.
+
+
+   2° CHAMAR esta função 'add' e MOSTRAR na tela:
+
+	- function Contador(props) {
+
+    		const [count, setCount] = React.useState(0)
+
+    		function add() {
+        		setCount( count + 1);
+		}
+		
+		return (
+			<h1>Contador: {count}</h1>
+
+			<button onClick={add}> Add </button>
+		)}
+
+	EXPLICAÇÃO: 
+		
+		* Toda vez que o usuario clicar no botão:
+			- <button onClick={add}>
+
+		* Vai incrementar +1 ao VALOR do ESTADO, e mostrar
+		  no titulo <h1>:
+			- <h1>Contador: {count}</h1>
+
+
+
+ESTADO(hook) Effect Hook(EFEITO COLATERAL)
+
+O Effect Hook, ou useEffect, é um hook do React que permite 
+executar efeitos colaterais em componentes funcionais. Tipo uma
+FUNÇÃO CALLBACK que da o retorno depois que o componente é 
+renderizado.
+
+   1° Criando o HOOK de callback para saber se o componente foi
+      renderizado:
+
+	- React.useEffect(()=> {
+        	console.log('Componente Renderizado!')
+         });
+
+	* Vai retornar no console após a RENDERIZAÇÃO do 
+	  componente.
+
+
+   2° Criando HOOK de CALLBACK para saber se o ESTADO foi 
+      alterado:
+
+	- React.useEffect(()=> {
+        	console.log('Estado Alterado!')
+          }, [count]);
+
+	* Apenas acrescentando o ESTADO entre colchetes '[count]'
+	  E teremos o retorno toda vez que o ESTADO for ALTERADO.
+
+
+   3° Criando HOOK de CALBACK para saber se o Componente foi 
+      MONTADO:
+
+	- React.useEffect(()=> {
+        	console.log('Estado NOME Alterado!')
+    	  }, []);
+
+	* Apenas deixando o ARRAY[] vazio.
+
+
+
+MANIPULADORES DE EVENTO
+
+Em REACT TODOS os manipuladores de evento será com CamelCase:
+
+ex.: 	Em JS:		     Em REACT:
+
+     onclick = ''      \    onClick = {}
+     onmouseover = ''  \    onMouseOver = {}
+     onkeyup = ''      \    onKeyUp = {}
+
