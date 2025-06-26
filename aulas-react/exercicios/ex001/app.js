@@ -70,10 +70,16 @@
 //     }
 // }
 
+function Explodiu(props) {
+    return (
+        <h1 className="text-danger">EXPLODIU!</h1>
+    )
+};
+
 function Contador(props) {
     //Criando o ESTADO
     const [count, setCount] = React.useState(0);
-    const [nome, setNome] = React.useState('');
+    const [nome, setNome] = React.useState(btnNome);
 
     //Efeito Colateral depois de RENDERIZADO
     React.useEffect(()=> {
@@ -84,6 +90,17 @@ function Contador(props) {
     React.useEffect(()=> {
         document.title = 'Contador: ' + count
         console.log('Estado COUNT Alterado!')
+
+        if(count < 1) [
+            setNome(false)
+        ]
+        if(count >= 1) {
+            setNome('Anderson')
+        }
+        if(count > 9) {
+            setNome(false)
+        }
+
     }, [count])
     //Efeito Colateral depois de ALTERAR o ESTADO nome
     React.useEffect(()=> {
@@ -96,23 +113,36 @@ function Contador(props) {
     }, [])
 
     function add() {
+         if(count == 10) {
+            return count;
+        }
         setCount( count + 1);
     }
     function sub() {
+        if(count == 0) {
+            return count;
+        }
         setCount( count - 1 );
     }
 
     function trocaNome() {
-        if(nome == 'Bernardo') {
-            setNome('Anderson' + count);
+        if(nome == 'Anderson') {
+            setNome(nome + ' Bernardo');
         }
-        setNome('Bernardo');
+        else{
+            setNome('Anderson');
+        }
+         
     }
+
+    const btnNome = props.btnNome;
 
     return (
         <div className="p-5 mb-4 bg-body-tertiary rounded-3">                  
             <div className="container-fluid py-5"> 
-                <h1 className="display-5 fw-bold">Contador: {count} </h1> 
+                {
+                    count >= 10 ? <Explodiu/> : <h1 className="display-5 fw-bold">Contador: {count} </h1> 
+                }
                 <p className="col-md-8 fs-4">Aprendendo State(Estado).</p> 
                                 
                 <div className='row gap-2'>                         
@@ -120,8 +150,14 @@ function Contador(props) {
                     
                     <button onClick={add} className="col btn btn-success btn-lg" type="button">Add +</button>
                 </div>
-                <h1 className="display-5 fw-bold">Nome: {nome} </h1> 
-                <button onClick={trocaNome} className="col btn btn-primary btn-lg" type="button">Trocar Nome</button>
+                {
+                    nome && 
+                    <div className='row gap-2'>
+                        <h1 className="display-5 fw-bold mt-4">Nome: {nome} </h1> 
+                        <button onClick={trocaNome} className="col btn btn-primary btn-lg" type="button">Trocar Nome</button>
+                    </div>
+                }
+                
             </div>
         </div>
     )
@@ -131,7 +167,7 @@ function App() {
     return (
         <main>
             <div className='container py-4'>
-                <Contador/>
+                <Contador btnNome = {false}/>
             </div>
         </main>
     )

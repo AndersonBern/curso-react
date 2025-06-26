@@ -522,3 +522,105 @@ ex.: 	Em JS:		     Em REACT:
      onmouseover = ''  \    onMouseOver = {}
      onkeyup = ''      \    onKeyUp = {}
 
+
+
+RENDERIZAÇÃO CONDICIONAL EM REACT
+
+Em JSX(React) podemos fazer condições INLINE, que são chamadas de 
+condições ternarias:
+
+Condição com IF/ELSE:
+
+	- condição ? True : False
+
+  PRIMEIRO vem a condição, 
+  APÓS o '?' oque renderiza se for VERDADEIRA a condição 
+  e APÓS o ':' oque renderiza se for FALSA.
+
+  ex.: {
+	  count >= 10 ? <h1>Verdadeiro</h1> : <h1>Falso</h1>
+       }
+
+	* count >= 10: Se 'count'(ESTADO) for igual a 10...
+
+	* ? <h1>Verdadeiro</h1>: Se 'count' for igual a 10 vai
+				 renderizar: <h1>Verdadeiro</h1>.
+
+	* : <h1>Falso</h1>:  SE 'count' não for igual a 10 vai
+			     renderizar: <h1>Falso</h1>
+
+
+OBS.: É OBRIGATÓRIO ser entre CHAVES{};
+      Estas condições são no JSX(tags), ou seja, no RETORNO de um 
+      componente. ex.: return(...).
+
+
+
+Condição para TESTAR se é VERDADEIRO:
+
+	- condição && TRUE
+
+   PRIMEIRO a condição; 
+   APÓS o '&&' é oque acontece se for verdadeiro.
+
+   ex.: {
+	    nome && <div>Verdadeiro</div>
+	}
+
+	* nome: SE 'nome'(ESTADO) existir...
+
+	* && <div>Verdadeiro</div>: Vai renderizar a <div>.
+
+OBS.: É OBRIGATÓRIO ser entre CHAVES{};
+      Estas condições são no JSX(tags), ou seja, no RETORNO de um 
+      componente. ex.: return(...).
+
+
+
+LISTAS E CHAVES em REACT
+
+Em REACT o método mais utilizado para manipular ARRAY é o .map().
+Este método cria um novo array com os resultados da aplicação de 
+uma função a cada elemento do array original, sem modificar o 
+array original. 
+
+   Como funciona:
+
+	- const arr = [1, 2, 3, 4, 5];
+
+	  const arrDuplo = arr.map(n => n *2);
+
+	* arr.map(...): Método .map() no array 'arr';
+
+	* (n => n *2): Vai percorrer o array 'arr', e cada 
+		       Numero(n) vai ser trocado (=>) pelo 
+		       NUMERO(n) multiplicado por 2 no 
+		       NOVO ARRAY que o .map() retorna.
+
+	ERA: 	  arr = [1, 2, 3, 4, 5];
+	RETORNO:  arrDuplo = [2, 4, 6, 8, 10];
+
+
+   Como utilizamos em REACT:
+
+   Em React, você geralmente usa o map() para transformar um array
+   de dados em um array de elementos JSX (como <li>, <div>, etc.)
+   que podem ser renderizados na interface.
+
+	ex.: const itemLista = arr.map(
+    		(numero) => 
+        	<li key={numero.toString()}> {numero} </li>
+	    ); 
+
+	* arr.map( (numero) => ...): Para cada numero do ARRAY 
+				     'arr'...
+
+	* <li key={numero.toString()}> {numero} </li>:
+			Vai colocar o VALOR de numero dentro de
+			um <li>. 
+
+	OBS.: O atributo 'key={numero.toString()}' é necessário
+	      para que o JSX possa identificar cada <li> pela sua
+	      sua chave(key). E neste caso foi o proprio numero
+	      convertido em STRING(toString()) pois o atributo
+	      'key' PRECISA ser em formato de string.
