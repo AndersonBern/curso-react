@@ -624,3 +624,104 @@ array original.
 	      sua chave(key). E neste caso foi o proprio numero
 	      convertido em STRING(toString()) pois o atributo
 	      'key' PRECISA ser em formato de string.
+
+
+MANIPULANDO MATRIZES EM REACT
+
+   DENTRO DO COMPONENTE APP:
+
+     1- Vamos criar um ARRAY => com OBJETOS => com DADOS:
+	
+	- function App() {
+	     const usuarios = [
+        	{id: 1, nome: 'Anderson', idade: 25},
+        	{id: 2, nome: 'Bernardo', idade: 27},
+        	{id: 3, nome: 'Maria', idade: 21}
+    	     ]
+	  };
+
+
+     2- Vamos fazer o RETORNO, que é oque será renderizado:
+
+	- return (
+        	<ul><Item lista={usuarios}/></ul>
+   	  )
+	
+	* Vai RETORNAR uma <ul> e seus itens<li> virão de outro 
+	  componente chamado <Item/>.
+
+	* O componente <Item/> recebe uma propriedade(props) 
+	  chamada 'lista' que recebe a MATRIZ 'usuários'.
+
+
+     3- Vamos criar o componente que irá gerar os itens da 
+	lista<li>:
+
+	- function Item(props) {...}
+
+
+   DENTRO DO COMPONENTE ITEM:
+     
+     4- Vamos receber a MATRIZ que veio pela propriedade(props)
+	'lista':
+
+	- function Item(props) {
+	  	const usuarios = props.lista
+	  }
+
+
+     5- Vamos fazer o RETORNO que vai gerar os itens da lista<ol>
+	no componente App:
+
+	- return (
+        	usuarios.map(
+            		usuario => 
+                	<li key={usuario.id.toString()}> 
+			{usuario.nome} </li>
+        	)
+    	  )
+
+	* usuarios.map(...): Vai MAPEAR a matriz usuarios.
+
+	* usuario => : Para CADA item na matriz...
+
+	* <li key={usuario.id.toString()}>...</li> : 
+		Será gerado um item de lista<li> com uma 'key' que
+		receberá o valor da propriedade ID do 
+		item(usuario.id)
+		transformado em string(.toString()).
+
+	* {usuario.nome}: Dentro do <li> estará o valor da 
+			  propriedade NOME do item(usuario.nome).
+
+	
+SCRIPT COMPLETO:
+
+	- function App() {
+	     const usuarios = [
+        	{id: 1, nome: 'Anderson', idade: 25},
+        	{id: 2, nome: 'Bernardo', idade: 27},
+        	{id: 3, nome: 'Maria', idade: 21}
+    	    ]
+	    return (
+                <ul><Item lista={usuarios}/></ul>
+   	    )
+	 };
+
+	 function Item(props) {
+    	    const usuarios = props.lista
+       	    return (
+        	usuarios.map(
+            	    usuario => 
+                    <li key={usuario.id.toString()}> 
+		    {usuario.nome} </li>
+                )
+            )
+	 };
+
+	 ReactDOM.render(
+    		<App/>,
+    		document.getElementById('root')
+	);
+
+
