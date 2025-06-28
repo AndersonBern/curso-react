@@ -1,15 +1,26 @@
-const arr = [1, 2, 3, 4, 5];
-
-const itemLista = arr.map(
-    (numero) => 
-        <li key={numero.toString()}> {numero} </li>
-);
-
 function App() {
+    const usuarios = [
+        {id: 1, nome: 'Anderson', idade: 25},
+        {id: 2, nome: 'Bernardo', idade: 27},
+        {id: 3, nome: 'Maria', idade: 21}
+    ]
     return (
-        <ul>{itemLista}</ul>
+        <ul><Item lista={usuarios}/></ul>
     )
-}
+};
+
+function Item(props) {
+    const usuarios = props.lista
+    return (
+        usuarios.map(
+            usuario => 
+                <li key={usuario.id.toString()}> 
+                    Nome: {usuario.nome} <br/>
+                    Idade: {usuario.idade} <br/> <br/> 
+                </li>
+        )
+    )
+};
 
 
 ReactDOM.render(
