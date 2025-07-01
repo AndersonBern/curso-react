@@ -725,3 +725,113 @@ SCRIPT COMPLETO:
 	);
 
 
+
+FORMULÁRIOS COM REACT
+
+Para trabalhar com formulários independente do tipo de INPUT, e
+manipular os DADOS vindos do input utilizamos o STATE(estado)
+E para CADA INPUT temos de dar um valor INICIAL:
+
+ex. Em um FORMULÁRIO com input 'text'  &  input 'radio': 
+
+	- const [form, setForm] = React.useState({
+       	 	cliente: '',
+        	dia: '',
+        	horario: ''
+ 	  })
+
+		* Para AMBOS normalmente se trabalha com o valor 
+		  inicial ''(vazio).
+
+
+ex. Em um FORMULÁRIO com input 'checkbox':
+
+	- const [form, setForm] = React.useState({
+        	wifi: false,
+        	churrasqueira: false,
+        	piscina: false
+    	  })
+
+		* Para CADA opção normalmente se trabalha com 
+		  BOOLEANOS(true, false)
+
+
+PARA MNIPULAR AS MUDANÇAS QUE OCOREREM NO FORMULÁRIO:
+
+OBS.: As propriedades do ESTADO tem que ter O MESMO NOME do 
+      atributo 'name' do input:
+
+	ex: 
+
+	const [form, setForm] = React.useState({
+       	 	cliente: ''
+	})
+
+	<input type='text' name='cliente'></input>
+
+
+		* cliente: ''  ===  name='cliente'
+
+
+1- Vamos ADICIONAR em TODOS os INPUTS do formulário o atributo:
+   'onChange', chamando a função que irá guardar todas as mudanças:
+
+	- <input onChange={handleChange} name="cliente"></input>
+	
+	  * {handleChange} é a constante que contém FUNÇÃO que 
+	    manipula as mudanças.
+
+
+2- Vamos criar uma constante que contém a FUNÇÃO que vai GUARDAR 
+   cada mudança que ocorrer no formulário.
+
+	- const handleChange = (evento) => {
+        	const auxForm = { ...form };
+        	auxForm[evento.target.name] = evento.target.value;
+        	setForm(auxForm);
+    	  }
+
+	EXPLICAÇÃO POR LINHA:
+
+		1- const handleChange = (evento) => {...}:
+			A constante que 
+			MANIPULA MUDANÇAS(handleChange) recebe uma
+			função com o 'evento' como parametro.
+			'evento' é o local onde ocorre uma mudança.
+
+		2- const auxForm = { ...form }:
+			Uma constante que recebe a CÓPIA do objeto
+			'form'. Que é onde estão os ESTADOS do 
+			formulário.
+			{...form}: É um método do JS para copiar 
+				   um objeto, neste caso é 'form'.
+
+		3- auxForm[evento.target.name] = 
+		   evento.target.value:
+
+			* auxForm[evento.target.name] = :
+				A PROPRIEDADE do objeto contido em
+				'auxForm' que for IGUAL ao 
+				ATRIBUTO 'name' do alvo(target)
+				recebe...
+
+			* evento.target.value: 
+				O VALOR(value) do alvo(target).
+
+		4- setForm(auxForm): Muda o objeto 'form' para 
+				     receber o objeto contido em
+				     'auxForm'.
+
+
+3- Criando HOOK de CALLBACK para saber se o ESTADO/VALOR foi 
+   alterado:
+
+	- React.useEffect(()=> {
+        	console.log(form)
+          }, [form]);
+
+	* Acrescentando o ESTADO entre colchetes '[form]'
+	  teremos o retorno toda vez que o ESTADO/VALOR for 
+	  ALTERADO.
+
+				
