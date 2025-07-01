@@ -834,4 +834,62 @@ OBS.: As propriedades do ESTADO tem que ter O MESMO NOME do
 	  teremos o retorno toda vez que o ESTADO/VALOR for 
 	  ALTERADO.
 
-				
+*4- EXTRA!!!
+	Para input tipo 'CHECKBOX' que recebe valores BOOLEANOS
+	este método não vai funcionar. Mas podemos adicionar uma
+	CONDIÇÃO TERNÁRIA para tratar do input 'checkbox':
+
+	Na linha onde pegamos o campo de input alterado pelo 
+	'name'...
+
+    ex.: auxForm[evento.target.name] = evento.target.type ===
+	 'checkbox' ? evento.target.checked : evento.target.value; 
+
+	* evento.target.type === 'checkbox' ? :
+		SE o TIPO do INPUT for igual a 'checkbox'...
+
+	* ? = SE FOR VERDADE...
+	  evento.target.checked :
+		O input vai receber o atributo 'checked'. Que 
+		sempre retornará um valor BOOLEANO, se for 
+		'checked' é TRUE, se não for 'checked' é FALSE.
+
+	* : = SE NÃO(else)...
+	  evento.target.value
+		SE NÃO for do tipo 'checkbox', vai pegar o valor
+		do input.				
+
+
+PARA TRABALHAR COM OS DADOS DO FORMULÁRIO AO ENVIAR(onSubmit)
+
+1- É necessário adicionar o EVENTO 'onSubmit' ao formulário para 
+   chamar a função que denomina oque acontece AO ENVIAR os dados.
+
+	- <form onSubmit={enviarForm}>...</form>
+
+	* Entre {} está a VARIAVEL que contém a função.
+
+
+2- Criar a váriavel que contém a função:
+
+	- const enviarForm = (envio) => {
+        	envio.preventDefault();
+		...
+	  }
+
+	* O parametro 'envio' é o evento 'onSubmit'(ao enviar);
+	
+	* envio.preventDefault(): AO ENVIAR(envio), previnir o
+				  padrão(preventDefault).
+				  Para NÃO permitir que ao enviar
+				  dê um 'refresh' na página.
+
+
+3- Após criada a constante coma a função podemos manipular os 
+   dados como quisermos, para enviar pro BACK-END, fazer VALIDAÇÃO
+   etc...
+   Qualquer dado pode ser acessado pelo ESTADO. Neste caso 'form'.
+   
+	ex.: let cliente = form.cliente
+	     let dia = form.dia
+	     ...
