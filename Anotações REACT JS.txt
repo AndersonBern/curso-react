@@ -943,3 +943,45 @@ CRIANDO UM PROJETO REACT MAIS PROFISSIONAL
 7- Para RODAR o seu projeto, digite no terminal do VsCode:
 
 	- npm run dev
+
+
+
+
+PARA CRIAR COMPONENTES EXTERNOS:
+
+1- Na pasta 'src', crie uma pasta chamada 'components', e nela 
+   ficarão seus componentes.
+
+
+IMPORT e EXPORT
+
+ * Para EXPORTAR componentes para a página principal(main.jsx)
+   basta em cada componente, antes da função adicionar o metodo
+   'export':
+
+	ex.: export function Navbar() {...}
+
+
+ * Para IMPORTAR, basta ir na pagina principal(main.jsx) e fazer
+   o 'import' e o nome do componente entre {}:
+
+	ex.: import { Navbar } from './components/navbar.jsx'
+
+
+ * Também podemos ter MAIS DE UM componente no mesmo arquivo, 
+   basta fazer o mesmo processo para EXPORTA-LO...
+   E para IMPORTAR basta adicionar o novo componente as {} do 
+   'import' no arquivo principal(main.jsx):
+
+	ex.: import { Navbar, SubNavbar } from './components/...'
+
+
+ * Para utilizar ESTADO(useState) e o EFEITO COLATERAL(useEffect),
+   nos nossos componentes é necessário IMPORTAR do REACT, desta 
+   forma:
+
+	- 
+
+
+
+
