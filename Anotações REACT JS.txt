@@ -907,6 +907,12 @@ CRIANDO UM PROJETO REACT MAIS PROFISSIONAL
 
 	- npm create vite@latest
 
+   OU PARA PULAR O PASSO 3:
+
+	- npm create vite@latest nomeDoProjeto -- --template react
+
+	* Assim já vai criar o projeto em react e JS.
+
 3- Crie o nome do seu projeto, e as tecnologias que vc vai usar 
    nele: 
 
