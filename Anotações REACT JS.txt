@@ -893,3 +893,47 @@ PARA TRABALHAR COM OS DADOS DO FORMULÁRIO AO ENVIAR(onSubmit)
 	ex.: let cliente = form.cliente
 	     let dia = form.dia
 	     ...
+
+
+
+CRIANDO UM PROJETO REACT MAIS PROFISSIONAL
+
+1- Vá ao CMD e encontre o local onde vc deseja criar o seu 
+   projeto:
+
+	- cd C:\Users\Desktop\Documents\Estudos Programação/react
+
+2- Agora CRIE o seu projeto como o comando:
+
+	- npm create vite@latest
+
+3- Crie o nome do seu projeto, e as tecnologias que vc vai usar 
+   nele: 
+
+      ex.: 
+	   |
+	   o  Project name:
+	   |  projeto1
+	   |
+	   o  Select a framework:
+	   |  React
+	   |
+	   o  Select a variant:
+	   |  JavaScript
+
+4- Para acessar o seu projeto basta digitar: cd NomeDoProjeto
+
+	- cd projeto1
+
+5- Para abrir o projeto no VsCode: 
+
+	- code .
+
+6- No VsCode abra o terminal(ctrl + ''), para instalar as 
+   dependencias do NPM. Digite:
+
+	- npm install
+
+7- Para RODAR o seu projeto, digite no terminal do VsCode:
+
+	- npm run dev
