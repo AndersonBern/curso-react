@@ -977,10 +977,10 @@ IMPORT e EXPORT
 
 
  * Para utilizar ESTADO(useState) e o EFEITO COLATERAL(useEffect),
-   nos nossos componentes é necessário IMPORTAR do REACT, desta 
-   forma:
+   nos nossos componentes é necessário IMPORTAR do REACT no 
+   arquivo do componente, desta forma:
 
-	- 
+	- import { useState, useEffect } from 'react'
 
 
 
