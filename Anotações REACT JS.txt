@@ -985,3 +985,79 @@ IMPORT e EXPORT
 
 
 
+PARA NAVEGAÇÃO ENTRE PAGINAS COM REACT
+
+1- Em React puro não é posivel fazer navegação por meio de rotas, 
+   pois os arquivos .jsx não são paginas, são componentes. Mas 
+   caso você queira se utilizar de rotas entre páginas é 
+   necessário instalar uma biblioteca em seu projeto: 
+   'react-router'.
+
+	- npm install react-router
+
+2- Agora vamos importar alguns modulos do 'react-router' para
+   podermos fazer o roteamento entre paginas:
+
+	- import { BrowserRouter, Routes, Route } from 
+          'react-router'
+
+
+3- Também vamos importar as nossas páginas que estão em uma pasta
+   chamada 'pages' dentro de 'src':
+
+	- import Home from './pages/Home'
+	  import Sobre from './pages/Sobre'
+
+
+4- Para criar as rotas das paginas, é necessário criar a estrutura
+   com os modulos em um componente, que neste caso foi o 'App.jsx'
+
+	- function App() {
+
+  		return (
+    		   <BrowserRouter>
+      		      <Routes>
+        		<Route path='/' element={<Home/>} />
+        		<Route path='/sobre' element={<Sobre/>} />
+      		      </Routes>
+    		   </BrowserRouter>
+      
+  		)
+	   }
+
+	EXPLICAÇÃO POR LINHA:
+
+		1- <BrowserRouter> ... </BrowserRouter>:
+			É o roteador.
+
+		2- <Routes> ... </Routes>: 
+			Onde vão as ROTAS.
+
+		3- <Route path='/' element={<Home/>} />:
+			ROTA para a página: '/', e a 
+			página/componente que será renderizada: 
+			<Home/>.
+
+		4-  <Route path='/sobre' element={<Sobre/>} /> 
+			ROTA para a página: '/sobre', e a 
+			página/componente que será renderizada: 
+			<Sobre/>
+
+5- Agora para navegar entre páginas basta fazer a ANCORAGEM <a>,
+   Dentro dos componentes das páginas, igual fariamos no HTML 
+   comum:
+
+	Dentro do COMPONENTE 'Home' da página principal '/':
+
+	- export default function Home() {
+  		return (
+    		   <div>
+        	      <h1>Home</h1>
+        	      <a href="/">Inicial</a> <br/>
+        	      <a href="/sobre">Sobre</a> <br/>
+        	      <a href="/contato">Contato</a> <br/>
+    	   	   </div>
+    
+  		)
+	  }
+
