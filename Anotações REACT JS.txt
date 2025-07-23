@@ -1061,3 +1061,54 @@ PARA NAVEGAÇÃO ENTRE PAGINAS COM REACT
   		)
 	  }
 
+
+
+
+PARA INSTALAR O BOOTSTRAP NO PROJETO
+
+1- No terminal:
+
+	- npm i bootstrap@5.3.7
+
+2- No arquivo 'App' onde vão os componentes:
+
+	* PARA IMPORTAR O CSS DO BOOTSTRAP:
+
+		- import 'bootstrap/dist/css/bootstrap.css';
+
+	* PARA IMPORTAR O JS DO BOOTSTRAP:
+
+		- import 'bootstrap/dist/js/bootstrap';
+
+
+
+PARA UTILIZAR IMAGENS NO PROJETO 
+
+1- É necessário importar a imagem já salva nos arquivos do projeto:
+
+	- import logo from '../assets/logo-airbnb.svg'
+
+		* logo: é o nome que você deu a imagem, para que possa 
+		  ser referenciado no script.
+
+2- Para usar será necessário criar uma tag <img> e dentro da 
+   propriedade 'src' entre {} coloca-se o nome da imagem dado 
+   anteriormente:
+
+	-  <img src={logo} alt="logo do site" />
+
+
+
+PARA INSTALAR O MATERIAL DISIGN ICONS NO PROJETO
+
+1- É necessário instalar no projeto:
+
+	- npm install @mdi/font
+
+2- IMPORTAR no arquivo do sweu componente:
+
+	- import '@mdi/font/css/materialdesignicons.css'
+
+3- Para utilizar basta usar a tag <i> com a CLASSE 'mdi mdi-NomeDoIcone'
+
+	- <i className='mdi mdi-web'></i>
