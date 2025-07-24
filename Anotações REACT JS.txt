@@ -1112,3 +1112,23 @@ PARA INSTALAR O MATERIAL DISIGN ICONS NO PROJETO
 3- Para utilizar basta usar a tag <i> com a CLASSE 'mdi mdi-NomeDoIcone'
 
 	- <i className='mdi mdi-web'></i>
+
+
+
+PARA INSTALAR E FAZER USO DE 'SWIPER' NO PROJETO
+
+1- Instalar no projeto:
+
+	- npm install swiper
+
+2- Importar no arquivo do seu componente:
+
+	- import { Swiper, SwiperSlide } from 'swiper/react';
+	  import { Pagination } from 'swiper/modules';
+
+	  import 'swiper/css';
+	  import 'swiper/css/pagination';
+
+		* IMPORTANTE: Isto vai depender do estilo do swiper que
+		  que você vai querer usar.
+		  PEGUE O EXEMPLO DO SITE: https://swiperjs.com/demos
