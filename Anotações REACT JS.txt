@@ -1129,6 +1129,40 @@ PARA INSTALAR E FAZER USO DE 'SWIPER' NO PROJETO
 	  import 'swiper/css';
 	  import 'swiper/css/pagination';
 
-		* IMPORTANTE: Isto vai depender do estilo do swiper que
+		* IMPORTANTE: Isto vai depender do tipo do swiper que
 		  que você vai querer usar.
 		  PEGUE O EXEMPLO DO SITE: https://swiperjs.com/demos
+
+
+
+COMO CRIAR UM MODAL COM BOOTSTRAP EM REACT
+
+1- Dentro da tag <button> onde será acionado o MODAL, você deve 
+   adicionar as seguintes propriedades:
+
+   * data-bs-toggle='modal'  e  data-bs-target='nomeDoModal'
+
+	- <button data-bs-toggle='modal' data-bs-target='#filterModal'>
+
+2- Você deve criar um COMPONENTE onde estará o seu modal, e ele deve ter
+   o mesmo ID passado anteriormente na propriedade 'data-bs-target'.
+
+	- export default function ModalFilter() {
+  		return (
+    			<div
+     			 className="modal fade"
+      			 id="filterModal">
+				...
+			</div>
+
+3- Agora vc terá que IMPORTAR o modal para o seu arquivo 'App.jsx'
+
+	- import ModalFilter from "./components/ModalFilter";
+
+	  function App() {
+  		return(
+    			<div>
+      				<ModalFilter />
+    			</div>
+  		)
+	  }
