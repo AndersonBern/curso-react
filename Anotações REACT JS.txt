@@ -1166,3 +1166,43 @@ COMO CRIAR UM MODAL COM BOOTSTRAP EM REACT
     			</div>
   		)
 	  }
+
+
+
+BOOTSTRAP
+
+OBS.: TODOS OS VALORES DE 1-5, PARA QUE NÃO EXISTA ESTA PROPRIEDADE 
+      BASTA COLOCAR 0.
+
+container-fluid: PARA OCUPAR TODO O ESPAÇO DISPONIVEL;
+img-fluid: PARA A IMAGEM OCUPAR TODO O ESPAÇO DISPONIVEL;
+
+text-truncate: PARA ABREVIAR com: '...';
+text-muted: PARA BAIXAR A OPACIDADE A 50%;
+text-center: TEXT ALIGN CENTER;
+fw-bold: NEGRITO;
+fs-1 à 5: FONT SIZE;
+
+w-100: WIDTH 100%;
+mt-1 à 5: MARGIN-TOP;
+mb-1 à 5: MARGIN-BOTTOM;
+px-1 à 5: PADDING NO EIXO x;
+py-1 à 5: PADDING NO EIXO y;
+
+border-bottom: BORDER BOTTOM;
+
+btn btn-primary: BOTÃO AZUL;
+btn btn-secondary: BOTÃO CINZA;
+
+
+row: LINHA;
+col: COLUNA;
+d-flex: DISPLAY FLEX;
+
+	justify-content-between: SPACE BETWEEN;
+	justify-content-around: SPACE AROUND;
+	justify-content-evenly: SPACE EVENLY; 
+
+	align-items-center: CENTRALIZAR;
+	align-items-start: NO INICIO;
+	align-items-end: NO FIM;
